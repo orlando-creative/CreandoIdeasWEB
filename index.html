@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creando Ideas - Murales para Eventos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+    /* Estilo Grande y Responsivo */
+    :root {
+    --blanco: #ffffff;
+    --rosa-fuerte: #e91e63;
+    --rosa-claro: #f8bbd0;
+    --gris-oscuro: #212121;
+    --gris-medio: #757575;
+    --sombra: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Tipografía Grande */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px; /* Tamaño base aumentado */
+    line-height: 1.6;
+    color: var(--gris-oscuro);
+    background-color: var(--blanco);
+    margin: 0;
+    padding: 0;
+    }
+
+    /* Header Destacado */
+    .header {
+    background-color: var(--rosa-fuerte);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    }
+
+    .logo {
+    font-size: 2.5rem; /* Más grande */
+    font-weight: 700; /* Negrita */
+    margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+    font-size: 1.3rem;
+    font-weight: 500;
+    }
+
+    /* Contenedor Principal */
+    .container {
+    max-width: 100%;
+    padding: 1.5rem;
+    margin: 0 auto;
+    }
+
+    /* Títulos Muy Visibles */
+    h1, h2, h3 {
+    font-weight: 700; /* Negrita */
+    color: var(--rosa-fuerte);
+    margin-top: 2rem;
+    }
+
+    h1 {
+    font-size: 2rem;
+    border-bottom: 3px solid var(--rosa-claro);
+    padding-bottom: 0.5rem;
+    }
+
+    h2 {
+    font-size: 1.8rem;
+    }
+
+    h3 {
+    font-size: 1.6rem;
+    }
+
+    /* Formulario con Texto Grande */
+    .form-group {
+    margin-bottom: 2rem;
+    }
+
+    label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 700; /* Negrita */
+    font-size: 1.1rem;
+    color: var(--gris-oscuro);
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    select {
+    width: 100%;
+    padding: 1rem; /* Más grande */
+    font-size: 1.1rem; /* Más grande */
+    font-weight: 500; /* Semi-negrita */
+    border: 2px solid var(--rosa-claro);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    }
+
+    /* Checkboxes Grandes */
+    input[type="checkbox"] {
+    width: 24px; /* Más grande */
+    height: 24px; /* Más grande */
+    margin-right: 1rem;
+    vertical-align: middle;
+    }
+
+    /* Tablas Responsivas */
+    .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0;
+    }
+
+    table {
+    min-width: 600px; /* Mínimo para mantener estructura */
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem; /* Más grande */
+    }
+
+    th {
+    background-color: var(--rosa-fuerte);
+    color: white;
+    padding: 1.2rem;
+    font-weight: 700; /* Negrita */
+    text-align: left;
+    }
+
+    td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--rosa-claro);
+    font-weight: 500; /* Semi-negrita */
+    }
+
+    /* Botones Destacados */
+    .btn {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background-color: var(--rosa-fuerte);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 700; /* Negrita */
+    cursor: pointer;
+    margin: 1rem 0;
+    text-align: center;
+    }
+
+    /* Previsualización del Contrato */
+    .contract-preview {
+    background-color: var(--blanco);
+    border: 2px solid var(--rosa-claro);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    font-size: 1.1rem; /* Más grande */
+    }
+
+    .contract-preview p {
+    font-weight: 500; /* Semi-negrita */
+    margin: 1rem 0;
+    }
+
+    /* Totales Destacados */
+    .total-section {
+    background-color: var(--rosa-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    font-weight: 700; /* Negrita */
+    font-size: 1.2rem; /* Más grande */
+    }
+
+    /* Footer Simple */
+    .footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    color: var(--gris-medio);
+    font-weight: 500; /* Semi-negrita */
+    }
+
+    /* Media Queries para Móviles */
+    @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+    }
+    
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    select {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 1rem;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .header {
+        padding: 1rem;
+    }
+    
+    .contract-preview {
+        padding: 1rem;
+    }
+    
+    th, td {
+        padding: 0.8rem;
+    }
+    }
+        #pdfNameModal {
+    font-family: 'Roboto', sans-serif;
+    }
+
+    #pdfNameModal input {
+    font-size: 1rem;
+    border: 2px solid #e91e63 !important;
+    }
+
+    #pdfNameModal button {
+    transition: all 0.3s;
+    font-weight: 500;
+    }
+
+    #pdfNameModal button:first-child {
+    background-color: #e91e63 !important;
+    }
+
+    #pdfNameModal button:first-child:hover {
+    background-color: #c2185b !important;
+    }
+
+    #pdfNameModal button:last-child:hover {
+    background-color: #bdbdbd !important;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">CREANDO IDEAS</div>
+        <div class="tagline">Murales personalizados para tus eventos especiales</div>
+    </div>
+
+    <div class="container">
+        <h1>Generador de Contratos</h1>
+        
+        <div class="form-group">
+            <h2>Datos del Cliente</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ej: María González">
+            
+            <label for="evento">Tipo de Evento:</label>
+            <select id="evento">
+                <option value="bodas">Bodas</option>
+                <option value="xv">XV Años</option>
+                <option value="baby-shower">Baby Shower</option>
+                <option value="graduacion">Graduación</option>
+                <option value="corporativo">Evento Corporativo</option>
+                <option value="Otro">Otro</option>
+            </select>
+            
+            <label for="fecha">Fecha del Evento:</label>
+            <input type="date" id="fecha">
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" placeholder="Ej: 12345678">
+            
+            <label for="notas">Notas adicionales:</label>
+            <textarea id="notas" rows="3" placeholder="Detalles del diseño, colores, etc."></textarea>
+        </div>
+        
+        <hr>
+        
+        <h2>Selección de Paneles</h2>
+        <div class="table-responsive">
+        <table id="murales-table">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Especificaciones</th>
+                    <th>Precio (Bs.)</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Panel Rustico</td>
+                <td>
+                    <select class="tamano">
+                        <option value="Oscuro">Oscuro</option>
+                        <option value="Claro">Claro</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="80"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                <td>Panel Circular</td>
+                <td>
+                    <select class="tamano">
+                        <option value="4x4">4x4</option>
+                        <option value="1.5">1.5</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="80"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Exagonal</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="80"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Medial</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="80"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                    <td>Semilunar</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="80"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                <td>Rectangular</td>
+                <td>
+                    <select class="tamano">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="80"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Arco</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="120"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+
+
+        <h2>Selección de Mesas y Alfombras</h2>
+        <div class="table-responsive">
+        <table id="murales-table">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Especificaciones</th>
+                    <th>Precio (Bs.)</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Rusticas claras</td>
+                <td>
+                    <select class="tamano">
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="0"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Rustica Oscura Larga</td>
+                    <td>1</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Altas Doradas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Doradas Jul</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Cruzadas Doradas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Redondas Doradas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Rusticas Delgadas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Cruzadas lizas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Cruzadas/Lineas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>ALFOMBRAS</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="Pasto">Pasto</option>
+                            <option value="Crema">Crema</option>
+                            <option value="Rosada">Rosada</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Lila">Lila</option>
+                            <option value="Roja">Roja</option>
+                            <option value="Negra">Negra</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>FLORERO</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>PORTATORTA</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>Accesorios Adicionales</h3>
+        <div class="table-responsive">
+        <table id="extras-table">
+            <thead>
+                <tr>
+                    <th>Producto Adicional</th>
+                    <th>Descripción</th>
+                    <th>Precio (Bs.)</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Letreros de TRUPAN</td>
+                    <td>
+                        <select class="Color">
+                            <option value="Feliz Cumpleaños">Feliz Cumpleaños</option>
+                            <option value="Mi Promocion">Mi Promocion</option>
+                            <option value="Mi Graduacion">Mi Graduacion</option>
+                            <option value="Baby Shower">Baby Shower</option>
+                            <option value="Nuestra Boda">Nuestra Boda</option>
+                            <option value="Mi Bautizo">Mi Bautizo</option>
+                            <option value="Mis 15 Años">Mis 15 Años</option>
+                            <option value="PERSONALIZADO">PERSONALIZADO</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="20"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Letreros LED</td>
+                    <td>
+                        <select class="Color">
+                            <option value="Happy birthday">Happy birthday</option>
+                            <option value="Mi 15 Años">Mi 15 Años</option>
+                            <option value="Mi Graduacion">Mi Graduacion</option>
+                            <option value="Oh Baby">Oh Baby</option>
+                            <option value="Nuestra Boda">Nuestra Boda</option>
+                            <option value="PERSONALIZADO">PERSONALIZADO</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="50"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Cesto de Hojas</td>
+                    <td>Para multiples eventos</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Porta canasta</td>
+                    <td>Cantidad: 2</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Tiras de hojas</td>
+                    <td>Cantidad: 4</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Tiras de flores</td>
+                    <td>Cantidad: 2</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Luces</td>
+                    <td>Ideal para iluminacion</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Letrero de Mesa</td>
+                    <td> 1 unidad</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Tela</td>
+                    <td>
+                        <select class="Color">
+                            <option value="Negra">Negra</option>
+                            <option value="Nude">Nude</option>
+                            <option value="Blanca">Blanca</option>
+                            <option value="Celeste">Celeste</option>
+                            <option value="Palo Rosa">Palo Rosa</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Lila">Lila</option>
+                            <option value="Mostaza">Mostaza</option>
+                            <option value="Verde Limon">Verde Limon</option>
+                            <option value="Rojo">Rojo</option>
+                            <option value="Naranja">Naranja</option>
+                            <option value="Verde">Verde</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                                <tr>
+                    <td>Transporte</td>
+                    <td>El precio varía segun la distancia.</td>
+                    <td><input type="number" class="precio" value="0"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="total-section">
+            <div class="form-group">
+                <label for="anticipo">Anticipo (Bs.):</label>
+                <input type="number" id="anticipo" value="1200">
+            </div>
+            <div>
+                <strong>Total del Pedido: </strong><span id="total-alquiler">0</span> Bs.
+            </div>
+            <div>
+                <strong>Saldo Pendiente: </strong><span id="saldo">0</span> Bs.
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button id="actualizar-btn" class="btn">Actualizar Contrato</button>
+                <!-- Modal para nombre de archivo -->
+    <div id="pdfNameModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background:white; padding:2rem; border-radius:8px; width:90%; max-width:400px;">
+        <h3 style="margin-top:0;">Nombre del archivo PDF</h3>
+        <input type="text" id="pdfFileName" placeholder="Ej: Contrato_Ana_Mendez" style="width:100%; padding:0.8rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:4px;">
+        <div style="display:flex; gap:1rem;">
+            <button onclick="confirmPdfName()" style="padding:0.8rem 1.5rem; background:#e91e63; color:white; border:none; border-radius:4px; cursor:pointer;">Guardar</button>
+            <button onclick="cancelPdfName()" style="padding:0.8rem 1.5rem; background:#ccc; color:#333; border:none; border-radius:4px; cursor:pointer;">Cancelar</button>
+        </div>
+        </div>
+    </div>
+        <button onclick="promptPdfName()" class="btn">Descargar PDF</button>
+        </div>
+        
+        <div id="contract-preview" class="contract-preview" style="width: 210mm; min-height: 297mm;">
+            <h1 style="text-align: center; color: #ff6b6b;">CREANDO IDEAS</h1>
+            <h2 style="text-align: center;">Contrato de Venta de Mural</h2>
+            
+            <h3>Datos del Cliente</h3>
+            <p><strong>Nombre:</strong> <span id="preview-nombre">María González</span></p>
+            <p><strong>Evento:</strong> <span id="preview-evento">Bodas</span></p>
+            <p><strong>Fecha:</strong> <span id="preview-fecha">15/05/2025</span></p>
+            <p><strong>Teléfono:</strong> <span id="preview-telefono">+52 55 1234 5678</span></p>
+            <p><strong>Notas:</strong> <span id="preview-notas">Mural en tonos pastel con nombres.</span></p>
+            
+            <hr>
+            
+            <h3>Accesorios Seleccionados</h3>
+            <table id="preview-murales">
+                <thead>
+                    <tr>
+                        <th>Modelo</th>
+                        <th>Especificaciones</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Se llenará dinámicamente -->
+                </tbody>
+            </table>
+            
+            <h3>Accesorios Adicionales</h3>
+            <table id="preview-extras">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Se llenará dinámicamente -->
+                </tbody>
+            </table>
+            
+            <div class="total-section">
+                <p><strong>Total del Pedido: </strong><span id="preview-total">0</span> Bs.</p>
+                <p><strong>Anticipo: </strong><span id="preview-anticipo">0</span> Bs.</p>
+                <p><strong>Saldo Pendiente: </strong><span id="preview-saldo">0</span> Bs.</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px;">
+                <strong>¡Gracias por elegir Creando Ideas!</strong><br>
+                Ubicacion: Plan3000 - Barrio 7 de Julio - Calle: las Rosas # 9 | Cel: +591 74628781
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Creando Ideas - Todos los derechos reservados.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar fecha por defecto (hoy + 15 días)
+            const today = new Date();
+            const eventDate = new Date(today);
+            eventDate.setDate(today.getDate() + 15);
+            document.getElementById('fecha').value = eventDate.toISOString().split('T')[0];
+            
+            // Actualizar previsualización inicial
+            updatePreview();
+            calculateTotal();
+            
+            // Event listeners
+            document.getElementById('nombre').addEventListener('input', updatePreview);
+            document.getElementById('evento').addEventListener('change', updatePreview);
+            document.getElementById('fecha').addEventListener('change', updateDatePreview);
+            document.getElementById('telefono').addEventListener('input', updatePreview);
+            document.getElementById('notas').addEventListener('input', updatePreview);
+            document.getElementById('anticipo').addEventListener('input', calculateTotal);
+            
+            document.getElementById('actualizar-btn').addEventListener('click', updateContractPreview);
+            document.getElementById('exportar-btn').addEventListener('click', exportToPDF);
+            
+            // Eventos para checkboxes y precios
+            document.querySelectorAll('.seleccionar').forEach(checkbox => {
+                checkbox.addEventListener('change', calculateTotal);
+            });
+            
+            document.querySelectorAll('.precio').forEach(input => {
+                input.addEventListener('input', calculateTotal);
+            });
+        });
+        
+        function updateDatePreview() {
+            const fechaInput = document.getElementById('fecha').value;
+            if (fechaInput) {
+                const [year, month, day] = fechaInput.split('-');
+                document.getElementById('preview-fecha').textContent = `${day}/${month}/${year}`;
+            }
+        }
+        
+        function updatePreview() {
+            document.getElementById('preview-nombre').textContent = document.getElementById('nombre').value;
+            document.getElementById('preview-evento').textContent = document.getElementById('evento').options[document.getElementById('evento').selectedIndex].text;
+            document.getElementById('preview-telefono').textContent = document.getElementById('telefono').value;
+            document.getElementById('preview-notas').textContent = document.getElementById('notas').value;
+            updateDatePreview();
+        }
+        
+        function calculateTotal() {
+            let total = 0;
+            
+            // Sumar murales seleccionados
+            document.querySelectorAll('#murales-table tbody tr').forEach(row => {
+                if (row.querySelector('.seleccionar').checked) {
+                    const precio = parseFloat(row.querySelector('.precio').value) || 0;
+                    total += precio;
+                }
+            });
+            
+            // Sumar extras seleccionados
+            document.querySelectorAll('#extras-table tbody tr').forEach(row => {
+                if (row.querySelector('.seleccionar').checked) {
+                    const precio = parseFloat(row.querySelector('.precio').value) || 0;
+                    total += precio;
+                }
+            });
+            
+            // Actualizar totales
+            document.getElementById('total-alquiler').textContent = total;
+            
+            const anticipo = parseFloat(document.getElementById('anticipo').value) || 0;
+            const saldo = Math.max(0, total - anticipo); // Evitar saldo negativo
+            
+            document.getElementById('saldo').textContent = saldo;
+        }
+        
+        function updateContractPreview() {
+            updatePreview();
+            
+            // Actualizar murales seleccionados
+            const previewMurales = document.querySelector('#preview-murales tbody');
+            previewMurales.innerHTML = '';
+            
+            document.querySelectorAll('#murales-table tbody tr').forEach(row => {
+                if (row.querySelector('.seleccionar').checked) {
+                    const cells = row.querySelectorAll('td');
+                    const newRow = document.createElement('tr');
+                    newRow.className = 'highlight';
+                    
+                    // for (let i = 0; i < 3; i++) {
+                    //     const cell = document.createElement('td');
+                    //     cell.textContent = cells[i].textContent;
+                    //     newRow.appendChild(cell);
+                    // }
+                    
+                    previewMurales.appendChild(newRow);
+                }
+            });
+            
+            // Actualizar extras seleccionados
+            const previewExtras = document.querySelector('#preview-extras tbody');
+            previewExtras.innerHTML = '';
+            
+            document.querySelectorAll('#extras-table tbody tr').forEach(row => {
+                if (row.querySelector('.seleccionar').checked) {
+            const cells = row.querySelectorAll('td');
+            const newRow = document.createElement('tr');
+            newRow.className = 'highlight';
+            
+            // Modelo
+            const cellModelo = document.createElement('td');
+            cellModelo.textContent = cells[0].textContent;
+            newRow.appendChild(cellModelo);
+            
+            // Tamaño (usamos el valor seleccionado)
+            const cellColor = document.createElement('td');
+            const selectColor = row.querySelector('.Color');
+            cellColor.textContent = selectColor.options[selectColor.selectedIndex].text;
+            newRow.appendChild(cellColor);
+            
+            // Precio
+            const cellPrecio = document.createElement('td');
+            cellPrecio.textContent = "." + cells[2].querySelector('.precio').value + "Bs.";
+            newRow.appendChild(cellPrecio);
+            
+            previewExtras.appendChild(newRow);
+                }
+            });
+            
+            // Actualizar totales
+            document.getElementById('preview-total').textContent = document.getElementById('total-alquiler').textContent;
+            document.getElementById('preview-anticipo').textContent = document.getElementById('anticipo').value;
+            document.getElementById('preview-saldo').textContent = document.getElementById('saldo').textContent;
+
+             // Actualizar murales seleccionados CON TAMAÑO ELEGIDO
+    document.querySelectorAll('#murales-table tbody tr').forEach(row => {
+        if (row.querySelector('.seleccionar').checked) {
+            const cells = row.querySelectorAll('td');
+            const newRow = document.createElement('tr');
+            newRow.className = 'highlight';
+            
+            // Modelo
+            const cellModelo = document.createElement('td');
+            cellModelo.textContent = cells[0].textContent;
+            newRow.appendChild(cellModelo);
+            
+            // Tamaño (usamos el valor seleccionado)
+            const cellTamano = document.createElement('td');
+            const selectTamano = row.querySelector('.tamano');
+            cellTamano.textContent = selectTamano.options[selectTamano.selectedIndex].text;
+            newRow.appendChild(cellTamano);
+            
+            // Precio
+            const cellPrecio = document.createElement('td');
+            cellPrecio.textContent = "." + cells[2].querySelector('.precio').value + "Bs.";
+            newRow.appendChild(cellPrecio);
+            
+            previewMurales.appendChild(newRow);
+        }
+    });
+        }
+        
+        let pdfGenerationPending = false;
+
+    function promptPdfName() {
+    if (pdfGenerationPending) return;
+    
+    // Mostrar el modal
+    document.getElementById('pdfNameModal').style.display = 'flex';
+    document.getElementById('pdfFileName').value = 'Contrato_' + document.getElementById('nombre').value.replace(/\s+/g, '_') || 'Contrato';
+    }
+    document.getElementById('pdfFileName').addEventListener('input', function() {
+  document.getElementById('fileNamePreview').textContent = this.value + '.pdf';
+});
+
+    function confirmPdfName() {
+    const fileName = document.getElementById('pdfFileName').value.trim();
+    
+    if (!fileName) {
+        alert('Por favor ingresa un nombre válido');
+        return;
+    }
+    
+    // Ocultar modal y generar PDF
+    document.getElementById('pdfNameModal').style.display = 'none';
+    pdfGenerationPending = true;
+    
+    // Añadir extensión .pdf si no la tiene
+    const finalFileName = fileName.endsWith('.pdf') ? fileName : fileName + '.pdf';
+    
+    // Llamar a la función de generación de PDF con el nombre personalizado
+    exportToPDF(finalFileName);
+    }
+
+    function cancelPdfName() {
+    document.getElementById('pdfNameModal').style.display = 'none';
+    }
+
+    // Modificar la función exportToPDF para aceptar nombre personalizado
+    function exportToPDF(fileName = '') {
+    // Si no se proporciona nombre, usar uno por defecto
+    const finalName = fileName || `Contrato_${document.getElementById('nombre').value || 'Cliente'}_${new Date().toISOString().slice(0,10)}.pdf`;
+    
+    updateContractPreview();
+    
+    setTimeout(() => {
+        const { jsPDF } = window.jspdf;
+        const element = document.getElementById('contract-preview');
+        
+        html2canvas(element, {
+        scale: 3,
+        useCORS: true,
+        scrollY: 0,
+        allowTaint: true,
+        windowHeight: element.scrollHeight
+        }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save(finalName);
+        
+        pdfGenerationPending = false;
+        });
+    }, 500);
+    }
+
+
+        let pdfGenerado = false;
+
+    function generarPDF() {
+    if (!pdfGenerado) {
+        exportToPDF();
+        pdfGenerado = true;
+        
+        // Resetear después de 5 segundos para permitir nueva descarga
+        setTimeout(() => {
+        pdfGenerado = false;
+        }, 5000);
+    } else {
+        alert('Por favor espera unos segundos antes de generar otro PDF.');
+    }
+    }
+    // Hacer que los checkboxes sean más fáciles de tocar
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(1.2)';
+    });
+    checkbox.addEventListener('touchend', function() {
+        this.style.transform = 'scale(1)';
+    });
+    });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+        });
+    });
+    });
+    </script>
+</body>
+</html>
