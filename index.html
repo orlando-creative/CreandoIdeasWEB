@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segales Mobiliarios - Generador de Contratos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* Estilos para vista previa en móviles */
+        @media (max-width: 768px) {
+            input[type="checkbox"] {
+                width: 24px;
+                height: 24px;
+            }
+            .precio-input {
+                width: 80px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="Imagen de WhatsApp 2025-04-18 a las 14.32.11_190e62f6.jpg" alt="Segales Mobiliarios" class="logo-img" id="logoImg">
+            <div class="logo-text">SEGALES MOBILIARIOS</div>
+        </div>
+        <div class="tagline">Mobiliario para tus eventos especiales</div>
+    </div>
+
+    <div class="container">
+        <h1>Generador de Contratos</h1>
+        
+        <div class="form-group">
+            <h2>Datos del Cliente</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ej: María González">
+            
+            <label for="evento">Tipo de Evento:</label>
+            <select id="evento">
+                <option value="bodas">Bodas</option>
+                <option value="xv">XV Años</option>
+                <option value="baby-shower">Baby Shower</option>
+                <option value="graduacion">Graduación</option>
+                <option value="corporativo">Evento Corporativo</option>
+                <option value="Otro">Otro</option>
+            </select>
+            
+            <label for="fecha">Fecha del Evento:</label>
+            <input type="date" id="fecha">
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" placeholder="Ej: 12345678">
+            
+            <label for="notas">Notas adicionales:</label>
+            <textarea id="notas" rows="3" placeholder="Detalles del diseño, colores, etc."></textarea>
+
+        </div>
+        
+        <hr>
+        
+        <h2>Selección de Paneles</h2>
+        <div class="table-responsive">
+        <table id="murales-table">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Especificaciones</th>
+                    <th>Precio (Bs.)</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Panel Rustico</td>
+                <td>
+                    <select class="tamano">
+                        <option value="Oscuro">Oscuro</option>
+                        <option value="Claro">Claro</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="80" style="width: 70px;"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                <td>Panel Circular</td>
+                <td>
+                    <select class="tamano">
+                        <option value="4x4">4x4</option>
+                        <option value="1.5">1.5</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="80" style="width: 70px;"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Exagonal</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="80" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Medial</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="80" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Semilunar</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="80" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                <td>Rectangular</td>
+                <td>
+                    <select class="tamano">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="80" style="width: 70px;"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Arco</td>
+                    <td>Metal</td>
+                    <td><input type="number" class="precio" value="120" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+
+        <h2>Selección de Mesas y Alfombras</h2>
+        <div class="table-responsive">
+        <table id="murales-table">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Especificaciones</th>
+                    <th>Precio (Bs.)</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Rusticas claras</td>
+                <td>
+                    <select class="tamano">
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                    </select>
+                </td>
+                <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Rustica Oscura Larga</td>
+                    <td>1</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Altas Doradas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Doradas Jul</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Cruzadas Doradas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Redondas Doradas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Rusticas Delgadas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Cruzadas lizas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Cruzadas/Lineas</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>ALFOMBRAS</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="Pasto">Pasto</option>
+                            <option value="Crema">Crema</option>
+                            <option value="Rosada">Rosada</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Lila">Lila</option>
+                            <option value="Roja">Roja</option>
+                            <option value="Negra">Negra</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>FLORERO</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>PORTATORTA</td>
+                    <td>
+                        <select class="tamano">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>Accesorios Adicionales</h3>
+        <div class="table-responsive">
+        <table id="extras-table">
+            <thead>
+                <tr>
+                    <th>Producto Adicional</th>
+                    <th>Descripción</th>
+                    <th>Precio (Bs.)</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Letreros de TRUPAN</td>
+                    <td>
+                        <select class="Color">
+                            <option value="Feliz Cumpleaños">Feliz Cumpleaños</option>
+                            <option value="Mi Promocion">Mi Promocion</option>
+                            <option value="Mi Graduacion">Mi Graduacion</option>
+                            <option value="Baby Shower">Baby Shower</option>
+                            <option value="Nuestra Boda">Nuestra Boda</option>
+                            <option value="Mi Bautizo">Mi Bautizo</option>
+                            <option value="Mis 15 Años">Mis 15 Años</option>
+                            <option value="PERSONALIZADO">PERSONALIZADO</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="20" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+
+                <tr>
+                    <td>Letreros LED</td>
+                    <td>
+                        <select class="Color">
+                            <option value="Happy birthday">Happy birthday</option>
+                            <option value="Mi 15 Años">Mi 15 Años</option>
+                            <option value="Mi Graduacion">Mi Graduacion</option>
+                            <option value="Oh Baby">Oh Baby</option>
+                            <option value="Nuestra Boda">Nuestra Boda</option>
+                            <option value="PERSONALIZADO">PERSONALIZADO</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="50" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Cesto de Hojas</td>
+                    <td>Para multiples eventos</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Porta canasta</td>
+                    <td>Cantidad: 2</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Tiras de hojas</td>
+                    <td>Cantidad: 4</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Tiras de flores</td>
+                    <td>Cantidad: 2</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Luces</td>
+                    <td>Ideal para iluminacion</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Letrero de Mesa</td>
+                    <td>1 unidad</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Tela</td>
+                    <td>
+                        <select class="Color">
+                            <option value="Negra">Negra</option>
+                            <option value="Nude">Nude</option>
+                            <option value="Blanca">Blanca</option>
+                            <option value="Celeste">Celeste</option>
+                            <option value="Palo Rosa">Palo Rosa</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Lila">Lila</option>
+                            <option value="Mostaza">Mostaza</option>
+                            <option value="Verde Limon">Verde Limon</option>
+                            <option value="Rojo">Rojo</option>
+                            <option value="Naranja">Naranja</option>
+                            <option value="Verde">Verde</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+                <tr>
+                    <td>Transporte</td>
+                    <td>El precio varía segun la distancia.</td>
+                    <td><input type="number" class="precio" value="0" style="width: 70px;"></td>
+                    <td><input type="checkbox" class="seleccionar"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="total-section">
+            <div class="form-group">
+                <label for="anticipo">Anticipo (Bs.):</label>
+                <input type="number" id="anticipo" value="0" class="precio-input">
+            </div>
+            <div>
+                <strong>Total del Pedido: </strong><span id="total-alquiler">0</span> Bs.
+            </div>
+            <div>
+                <strong>Saldo Pendiente: </strong><span id="saldo">0</span> Bs.
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button id="actualizar-btn" class="btn">Actualizar Contrato</button>
+            <button id="ver-preview-btn" class="btn">Vista Previa</button>
+            <button id="exportar-btn" class="btn">Descargar PDF</button>
+        </div>
+        
+        <!-- Modal para vista previa -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div id="contract-preview" style="width: 210mm; min-height: 297mm; background: white; padding: 20px; box-sizing: border-box;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© <span id="current-year"></span> Segales Mobiliarios - Todos los derechos reservados.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="codigo.js"></script>
+</body>
+</html>
